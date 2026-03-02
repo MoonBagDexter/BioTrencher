@@ -78,38 +78,38 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| TRADE-01 | TBD | Pending |
-| TRADE-02 | TBD | Pending |
-| TRADE-03 | TBD | Pending |
-| TRADE-04 | TBD | Pending |
-| TRADE-05 | TBD | Pending |
-| TRADE-06 | TBD | Pending |
-| TRADE-07 | TBD | Pending |
-| TRADE-08 | TBD | Pending |
-| TRADE-09 | TBD | Pending |
-| TRADE-10 | TBD | Pending |
-| MODE-01 | TBD | Pending |
-| MODE-02 | TBD | Pending |
-| MODE-03 | TBD | Pending |
-| MODE-04 | TBD | Pending |
-| DASH-01 | TBD | Pending |
-| DASH-02 | TBD | Pending |
-| DASH-03 | TBD | Pending |
-| DASH-04 | TBD | Pending |
-| DASH-05 | TBD | Pending |
-| DASH-06 | TBD | Pending |
-| CL1-01 | TBD | Pending |
-| CL1-02 | TBD | Pending |
-| CL1-03 | TBD | Pending |
-| CL1-04 | TBD | Pending |
-| DEPL-01 | TBD | Pending |
-| DEPL-02 | TBD | Pending |
+| TRADE-01 | Phase 1 | Pending |
+| TRADE-02 | Phase 1 | Pending |
+| TRADE-03 | Phase 1 | Pending |
+| TRADE-04 | Phase 1 | Pending |
+| TRADE-05 | Phase 1 | Pending |
+| TRADE-06 | Phase 1 | Pending |
+| TRADE-07 | Phase 1 | Pending |
+| TRADE-08 | Phase 1 | Pending |
+| TRADE-09 | Phase 1 | Pending |
+| TRADE-10 | Phase 1 | Pending |
+| MODE-01 | Phase 1 | Pending |
+| MODE-02 | Phase 3 | Pending |
+| MODE-03 | Phase 2 | Pending |
+| MODE-04 | Phase 3 | Pending |
+| DASH-01 | Phase 2 | Pending |
+| DASH-02 | Phase 2 | Pending |
+| DASH-03 | Phase 2 | Pending |
+| DASH-04 | Phase 2 | Pending |
+| DASH-05 | Phase 2 | Pending |
+| DASH-06 | Phase 2 | Pending |
+| CL1-01 | Phase 2 | Pending |
+| CL1-02 | Phase 2 | Pending |
+| CL1-03 | Phase 2 | Pending |
+| CL1-04 | Phase 2 | Pending |
+| DEPL-01 | Phase 3 | Pending |
+| DEPL-02 | Phase 3 | Pending |
 
 **Coverage:**
 - v1 requirements: 26 total
-- Mapped to phases: 0
-- Unmapped: 26
+- Mapped to phases: 26
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-09*
-*Last updated: 2026-03-09 after initial definition*
+*Last updated: 2026-03-09 after roadmap creation*
