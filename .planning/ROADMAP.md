@@ -28,11 +28,13 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. SAFE mode paper-trades the full pipeline (buy signal -> rug check -> mock buy -> position tracking -> exit) with zero SOL spent
   4. Open positions show real-time PNL calculated from live price data, with automatic exits triggered by copy-sell, take-profit, stop-loss, or time limit
   5. The system respects the 3-5 concurrent position limit, queuing or skipping signals when full
-**Plans**: TBD
+**Plans**: 4 plans
 
 Plans:
-- [ ] 01-01: TBD
-- [ ] 01-02: TBD
+- [ ] 01-01-PLAN.md -- Project scaffold, core types, event bus, config, utilities
+- [ ] 01-02-PLAN.md -- Webhook server, signal detector, rug filter
+- [ ] 01-03-PLAN.md -- Trade executor (SAFE mode), position manager
+- [ ] 01-04-PLAN.md -- Price monitor, pipeline wiring, webhook setup script
 
 ### Phase 2: Dashboard + CL1 Theater
 **Goal**: A viral-ready public dashboard that looks like a biological neural network is autonomously trading -- every pixel reinforces the CL1 narrative with real-time data flowing through WebSocket
@@ -71,6 +73,6 @@ Phases execute in numeric order: 1 -> 2 -> 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Trading Pipeline (SAFE Mode) | 0/TBD | Not started | - |
+| 1. Trading Pipeline (SAFE Mode) | 0/4 | Planned | - |
 | 2. Dashboard + CL1 Theater | 0/TBD | Not started | - |
 | 3. LIVE Trading + Deployment | 0/TBD | Not started | - |
