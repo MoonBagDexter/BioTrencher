@@ -1,0 +1,33 @@
+{
+  "name": "biotrencher",
+  "version": "1.0.0",
+  "description": "BioTrencher - CL1 trading pipeline",
+  "main": "src/server/index.ts",
+  "scripts": {
+    "dev": "tsx watch src/server/index.ts",
+    "start": "tsx src/server/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@solana/spl-token": "^0.4.14",
+    "@solana/web3.js": "^1.98.4",
+    "bs58": "^6.0.0",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "helius-sdk": "^2.2.2",
+    "node-cron": "^4.2.1",
+    "pino": "^10.3.1",
+    "tiny-typed-emitter": "^2.1.0",
+    "write-file-atomic": "^7.0.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.3.5",
+    "@types/write-file-atomic": "^4.0.3",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}

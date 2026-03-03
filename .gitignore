@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.env
+
+# Runtime data (positions and history are generated, not config)
+data/positions.json
+data/history.json
+
+# OS files
+.DS_Store
+Thumbs.db
