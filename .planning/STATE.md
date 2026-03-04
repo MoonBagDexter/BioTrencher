@@ -10,28 +10,28 @@ See: .planning/PROJECT.md (updated 2026-03-09)
 ## Current Position
 
 Phase: 1 of 3 (Trading Pipeline - SAFE Mode)
-Plan: 0 of TBD in current phase
-Status: Ready to plan
-Last activity: 2026-03-09 -- Roadmap created
+Plan: 1 of 4 in current phase
+Status: In progress
+Last activity: 2026-03-09 -- Completed 01-01-PLAN.md (Foundation)
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [███░░░░░░░] 25%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 0
-- Average duration: -
-- Total execution time: 0 hours
+- Total plans completed: 1
+- Average duration: 3 min
+- Total execution time: 3 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| - | - | - | - |
+| 01-trading-pipeline | 1/4 | 3 min | 3 min |
 
 **Recent Trend:**
-- Last 5 plans: -
-- Trend: -
+- Last 5 plans: 01-01 (3 min)
+- Trend: Starting
 
 *Updated after each plan completion*
 
@@ -45,19 +45,22 @@ Recent decisions affecting current work:
 - [Roadmap]: SAFE mode before LIVE -- full pipeline validated risk-free before spending SOL
 - [Roadmap]: Single Node.js monolith with typed EventEmitter bus as central architecture
 - [Roadmap]: @solana/web3.js v1 (not v2) due to PumpFun SDK peer dependency
+- [01-01]: Used @solana/web3.js 1.98.4 (safe 1.x, avoids compromised 1.95.6-7)
+- [01-01]: Singleton typed event bus with setMaxListeners(20)
+- [01-01]: Config fails fast on invalid wallet addresses using PublicKey constructor
 
 ### Pending Todos
 
-None yet.
+None.
 
 ### Blockers/Concerns
 
-- [Research]: @solana/web3.js 1.95.6-1.95.7 compromised -- must pin to 1.95.8+ or latest 1.x
 - [Research]: PumpFun SDK documentation is sparse -- needs hands-on exploration during Phase 1 planning
 - [Research]: Railway SQLite persistence uncertain -- may need JSON file or Railway persistent storage
+- [RESOLVED]: @solana/web3.js pinned to 1.98.4 (safe version)
 
 ## Session Continuity
 
 Last session: 2026-03-09
-Stopped at: Roadmap created, ready to plan Phase 1
+Stopped at: Completed 01-01-PLAN.md (Foundation)
 Resume file: None
