@@ -17,6 +17,7 @@ export interface RawWebhookPayload {
 
 export interface Signal {
   type: 'BUY' | 'SELL';
+  source: 'pumpfun' | 'pumpswap';
   mint: string;
   user: string;
   signature: string;
