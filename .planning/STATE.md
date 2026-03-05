@@ -48,6 +48,10 @@ Recent decisions affecting current work:
 - [01-01]: Used @solana/web3.js 1.98.4 (safe 1.x, avoids compromised 1.95.6-7)
 - [01-01]: Singleton typed event bus with setMaxListeners(20)
 - [01-01]: Config fails fast on invalid wallet addresses using PublicKey constructor
+- [01-02]: bs58 downgraded to v5 for CJS compatibility (v6 is ESM-only)
+- [01-02]: PumpSwap discriminator marked unverified with runtime warning
+- [01-02]: Added source field to Signal type for pumpfun/pumpswap discrimination
+- [01-02]: SELL signals bypass rug filter entirely
 - [01-03]: Price getter injection via callback to avoid circular deps with price monitor
 - [01-03]: Exit condition priority order: stop-loss > take-profit > time-limit
 - [01-03]: Pipeline modules export both class and init function pattern
