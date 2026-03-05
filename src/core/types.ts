@@ -39,6 +39,7 @@ export interface ExitParams {
 export interface TradeResult {
   signature: string;
   mint: string;
+  copiedFrom: string; // wallet address that triggered the copy-trade
   solAmount: number;
   tokensReceived: number;
   entryPrice?: number;

@@ -52,6 +52,7 @@ export class SafeExecutor implements ExecutionStrategy {
     return {
       signature,
       mint: signal.mint,
+      copiedFrom: signal.user,
       solAmount: this.buyAmountSol,
       tokensReceived,
       entryPrice,
@@ -68,6 +69,7 @@ export class SafeExecutor implements ExecutionStrategy {
     return {
       signature,
       mint: position.mint,
+      copiedFrom: position.copiedFrom,
       solAmount: solReceived,
       tokensReceived: 0,
       exitPrice,

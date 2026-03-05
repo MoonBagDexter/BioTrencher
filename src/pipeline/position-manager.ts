@@ -168,7 +168,7 @@ export async function initPositionManager(config: Config): Promise<PositionManag
   await pm.init();
 
   bus.on('trade:executed', (result: TradeResult) => {
-    pm.openPosition(result, result.mint);
+    pm.openPosition(result, result.copiedFrom);
   });
 
   bus.on('signal:detected', (signal: Signal) => {
