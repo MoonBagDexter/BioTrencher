@@ -5,32 +5,32 @@
 See: .planning/PROJECT.md (updated 2026-03-09)
 
 **Core value:** Real, provable on-chain profitable trades that look like they're being made by a biological neural network
-**Current focus:** Phase 1 - Trading Pipeline (SAFE Mode)
+**Current focus:** Phase 1 COMPLETE - Ready for Phase 2 (Stealth Layer)
 
 ## Current Position
 
 Phase: 1 of 3 (Trading Pipeline - SAFE Mode)
-Plan: 3 of 4 in current phase
-Status: In progress
-Last activity: 2026-03-09 -- Completed 01-03-PLAN.md (Trade Executor & Position Manager)
+Plan: 4 of 4 in current phase
+Status: Phase complete
+Last activity: 2026-03-09 -- Completed 01-04-PLAN.md (Price Monitor & Pipeline Bootstrap)
 
-Progress: [██████░░░░] 50%
+Progress: [████████░░] 100% Phase 1
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 3
+- Total plans completed: 4
 - Average duration: 3 min
-- Total execution time: 9 min
+- Total execution time: 12 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-trading-pipeline | 3/4 | 9 min | 3 min |
+| 01-trading-pipeline | 4/4 | 12 min | 3 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (3 min), 01-02 (3 min), 01-03 (3 min)
+- Last 5 plans: 01-01 (3 min), 01-02 (3 min), 01-03 (3 min), 01-04 (3 min)
 - Trend: Consistent
 
 *Updated after each plan completion*
@@ -55,6 +55,9 @@ Recent decisions affecting current work:
 - [01-03]: Price getter injection via callback to avoid circular deps with price monitor
 - [01-03]: Exit condition priority order: stop-loss > take-profit > time-limit
 - [01-03]: Pipeline modules export both class and init function pattern
+- [01-04]: 10s base Jupiter polling interval with exponential backoff (max 60s)
+- [01-04]: Separate 30s time-limit exit checker independent of price polling
+- [01-04]: Pipeline init order: positionManager -> signalDetector -> rugFilter -> tradeExecutor -> priceMonitor
 
 ### Pending Todos
 
@@ -62,12 +65,12 @@ None.
 
 ### Blockers/Concerns
 
-- [Research]: PumpFun SDK documentation is sparse -- needs hands-on exploration during Phase 1 planning
+- [Research]: PumpFun SDK documentation is sparse -- needs hands-on exploration during Phase 2 planning
 - [Research]: Railway SQLite persistence uncertain -- may need JSON file or Railway persistent storage
 - [RESOLVED]: @solana/web3.js pinned to 1.98.4 (safe version)
 
 ## Session Continuity
 
 Last session: 2026-03-09
-Stopped at: Completed 01-03-PLAN.md (Trade Executor & Position Manager)
+Stopped at: Completed 01-04-PLAN.md (Price Monitor & Pipeline Bootstrap) -- Phase 1 complete
 Resume file: None
