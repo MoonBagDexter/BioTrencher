@@ -1,14 +1,19 @@
 import express from 'express';
+import { Connection } from '@solana/web3.js';
 import { loadConfig } from './config.js';
 import { bus } from '../core/events.js';
 import { logger } from '../utils/logger.js';
 import type { RawWebhookPayload } from '../core/types.js';
+import { initSignalDetector } from '../pipeline/signal-detector.js';
+import { initRugFilter } from '../pipeline/rug-filter.js';
+import { initTradeExecutor } from '../pipeline/trade-executor.js';
+import { initPositionManager } from '../pipeline/position-manager.js';
+import { initPriceMonitor } from '../pipeline/price-monitor.js';
 
 const MAX_DEDUP_SIZE = 1000;
 const processedSignatures = new Set<string>();
 
 function evictOldest(): void {
-  // Set iterates in insertion order; delete the first entry (FIFO)
   const first = processedSignatures.values().next().value;
   if (first !== undefined) {
     processedSignatures.delete(first);
@@ -17,6 +22,15 @@ function evictOldest(): void {
 
 async function main(): Promise<void> {
   const config = loadConfig();
+  const connection = new Connection(config.rpcUrl);
+
+  // Initialize pipeline modules in dependency order
+  const positionManager = await initPositionManager(config);
+  initSignalDetector();
+  initRugFilter(connection);
+  initTradeExecutor(config, positionManager);
+  initPriceMonitor(positionManager, config);
+
   const app = express();
 
   app.use(express.json());
@@ -41,7 +55,6 @@ async function main(): Promise<void> {
         continue;
       }
 
-      // Evict oldest if at capacity
       if (processedSignatures.size >= MAX_DEDUP_SIZE) {
         evictOldest();
       }
@@ -55,16 +68,31 @@ async function main(): Promise<void> {
     res.json({
       status: 'ok',
       mode: config.mode,
-      positions: 0, // wired later
+      positions: positionManager.getOpenPositions().length,
     });
   });
 
   app.listen(config.port, () => {
+    const openPositions = positionManager.getOpenPositions().length;
     logger.info(
-      { port: config.port, mode: config.mode, wallets: config.wallets.length },
-      'BioTrencher server started',
+      [
+        '[BioTrencher] Pipeline active',
+        `  Mode: ${config.mode}`,
+        `  Wallets: ${config.wallets.length} tracked`,
+        `  Max positions: ${config.maxPositions}`,
+        `  Open positions: ${openPositions} (restored from state)`,
+      ].join('\n'),
     );
   });
+
+  // Graceful shutdown
+  const shutdown = async (): Promise<void> => {
+    logger.info('Shutting down...');
+    process.exit(0);
+  };
+
+  process.on('SIGINT', () => void shutdown());
+  process.on('SIGTERM', () => void shutdown());
 }
 
 main().catch((err) => {
