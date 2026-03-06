@@ -13,7 +13,7 @@ BioTrencher delivers a copy-trading bot disguised as a biological neural network
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Trading Pipeline (SAFE Mode)** - Webhook monitoring, rug filters, copy-trade execution, position management, and sell strategies in paper-trading mode
-- [ ] **Phase 2: Dashboard + CL1 Theater** - React SPA with neuron grid, positions panel, terminal console, CL1 biological simulation, and WebSocket real-time updates
+- [ ] **Phase 2: Dashboard + CL1 Theater** - Vanilla HTML/CSS/JS dashboard with neuron grid, positions panel, terminal console, CL1 biological simulation, and WebSocket real-time updates
 - [ ] **Phase 3: LIVE Trading + Deployment** - Real on-chain execution via PumpFun/PumpSwap/Jupiter, Railway deployment, public URL with Solscan verification
 
 ## Phase Details
@@ -46,11 +46,12 @@ Plans:
   3. Positions panel shows active coins with entry price, current price, unrealized PNL %, and a CL1 neural confidence bar per position
   4. Terminal console scrolls neural decision logs ("coherence spike... pattern match... confidence 0.847... EXECUTING BUY") that narrate every trade action
   5. Dashboard looks identical whether the backend is running in SAFE or LIVE mode -- no visual distinction between paper and real trades
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 02-01: TBD
-- [ ] 02-02: TBD
+- [ ] 02-01-PLAN.md -- WebSocket bridge, Express static serving, HTML scaffold, CSS theme, boot sequence
+- [ ] 02-02-PLAN.md -- Neuron grid canvas, bio-stats system, positions panel with confidence bars
+- [ ] 02-03-PLAN.md -- Terminal console with neural narratives, idle chatter, message router wiring
 
 ### Phase 3: LIVE Trading + Deployment
 **Goal**: Real SOL trades execute on-chain through PumpFun bonding curve and PumpSwap/Jupiter, deployed on Railway with a public URL anyone can use to verify trades on Solscan
@@ -74,5 +75,5 @@ Phases execute in numeric order: 1 -> 2 -> 3
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Trading Pipeline (SAFE Mode) | 4/4 | Complete | 2026-03-09 |
-| 2. Dashboard + CL1 Theater | 0/TBD | Not started | - |
+| 2. Dashboard + CL1 Theater | 0/3 | Not started | - |
 | 3. LIVE Trading + Deployment | 0/TBD | Not started | - |
