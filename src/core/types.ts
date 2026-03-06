@@ -63,6 +63,12 @@ export interface Position {
   copiedFrom: string; // wallet address that triggered the buy
 }
 
+export interface WsMessage {
+  type: string;
+  data: unknown;
+  ts: number;
+}
+
 export interface Config {
   heliusApiKey: string;
   rpcUrl: string;

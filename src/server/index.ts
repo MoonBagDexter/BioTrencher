@@ -1,4 +1,6 @@
 import express from 'express';
+import { createServer } from 'http';
+import { join } from 'path';
 import { Connection } from '@solana/web3.js';
 import { loadConfig } from './config.js';
 import { bus } from '../core/events.js';
@@ -9,6 +11,7 @@ import { initRugFilter } from '../pipeline/rug-filter.js';
 import { initTradeExecutor } from '../pipeline/trade-executor.js';
 import { initPositionManager } from '../pipeline/position-manager.js';
 import { initPriceMonitor } from '../pipeline/price-monitor.js';
+import { initWebSocketServer } from './ws-broadcast.js';
 
 const MAX_DEDUP_SIZE = 1000;
 const processedSignatures = new Set<string>();
@@ -34,6 +37,7 @@ async function main(): Promise<void> {
   const app = express();
 
   app.use(express.json());
+  app.use(express.static(join(process.cwd(), 'public')));
 
   app.post('/webhook', (req, res) => {
     // Respond 200 immediately -- Helius retries on slow responses
@@ -72,7 +76,10 @@ async function main(): Promise<void> {
     });
   });
 
-  app.listen(config.port, () => {
+  const server = createServer(app);
+  initWebSocketServer(server, () => positionManager.getOpenPositions());
+
+  server.listen(config.port, () => {
     const openPositions = positionManager.getOpenPositions().length;
     logger.info(
       [
@@ -81,6 +88,7 @@ async function main(): Promise<void> {
         `  Wallets: ${config.wallets.length} tracked`,
         `  Max positions: ${config.maxPositions}`,
         `  Open positions: ${openPositions} (restored from state)`,
+        `  Dashboard: http://localhost:${config.port}`,
       ].join('\n'),
     );
   });

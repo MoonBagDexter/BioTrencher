@@ -16,6 +16,7 @@
   "dependencies": {
     "@solana/spl-token": "^0.4.14",
     "@solana/web3.js": "^1.98.4",
+    "@types/ws": "^8.18.1",
     "bs58": "^5.0.0",
     "dotenv": "^17.3.1",
     "express": "^5.2.1",
@@ -23,7 +24,8 @@
     "node-cron": "^4.2.1",
     "pino": "^10.3.1",
     "tiny-typed-emitter": "^2.1.0",
-    "write-file-atomic": "^7.0.1"
+    "write-file-atomic": "^7.0.1",
+    "ws": "^8.19.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
