@@ -7,20 +7,20 @@
 
 ### Trading Engine
 
-- [ ] **TRADE-01**: System monitors static list of wallet addresses via Helius webhooks for new buy transactions
-- [ ] **TRADE-02**: When tracked wallet buys a PumpFun coin, system instantly evaluates rug filters before acting
-- [ ] **TRADE-03**: System rejects coins where dev/top wallet holds excessive supply concentration
-- [ ] **TRADE-04**: System executes buy via PumpFun bonding curve for pre-migration coins
-- [ ] **TRADE-05**: System executes buy via PumpSwap/Jupiter for post-migration coins
-- [ ] **TRADE-06**: System sells when tracked wallet sells the same coin
-- [ ] **TRADE-07**: System auto-sells at configurable take-profit percentage
-- [ ] **TRADE-08**: System auto-sells at configurable stop-loss percentage
-- [ ] **TRADE-09**: System auto-sells after configurable time limit with no other exit trigger
-- [ ] **TRADE-10**: System tracks up to 3-5 concurrent positions with entry price and real-time PNL
+- [x] **TRADE-01**: System monitors static list of wallet addresses via Helius webhooks for new buy transactions
+- [x] **TRADE-02**: When tracked wallet buys a PumpFun coin, system instantly evaluates rug filters before acting
+- [x] **TRADE-03**: System rejects coins where dev/top wallet holds excessive supply concentration
+- [x] **TRADE-04**: System executes buy via PumpFun bonding curve for pre-migration coins
+- [x] **TRADE-05**: System executes buy via PumpSwap/Jupiter for post-migration coins
+- [x] **TRADE-06**: System sells when tracked wallet sells the same coin
+- [x] **TRADE-07**: System auto-sells at configurable take-profit percentage
+- [x] **TRADE-08**: System auto-sells at configurable stop-loss percentage
+- [x] **TRADE-09**: System auto-sells after configurable time limit with no other exit trigger
+- [x] **TRADE-10**: System tracks up to 3-5 concurrent positions with entry price and real-time PNL
 
 ### Modes
 
-- [ ] **MODE-01**: SAFE mode runs full pipeline with paper trades (mock execution, real webhook signals, zero SOL)
+- [x] **MODE-01**: SAFE mode runs full pipeline with paper trades (mock execution, real webhook signals, zero SOL)
 - [ ] **MODE-02**: LIVE mode executes real trades with 0.05-0.1 SOL per trade
 - [ ] **MODE-03**: Dashboard looks identical in both SAFE and LIVE modes
 - [ ] **MODE-04**: Wallet address displayed with Solscan verification link in LIVE mode
@@ -78,17 +78,17 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| TRADE-01 | Phase 1 | Pending |
-| TRADE-02 | Phase 1 | Pending |
-| TRADE-03 | Phase 1 | Pending |
-| TRADE-04 | Phase 1 | Pending |
-| TRADE-05 | Phase 1 | Pending |
-| TRADE-06 | Phase 1 | Pending |
-| TRADE-07 | Phase 1 | Pending |
-| TRADE-08 | Phase 1 | Pending |
-| TRADE-09 | Phase 1 | Pending |
-| TRADE-10 | Phase 1 | Pending |
-| MODE-01 | Phase 1 | Pending |
+| TRADE-01 | Phase 1 | Complete |
+| TRADE-02 | Phase 1 | Complete |
+| TRADE-03 | Phase 1 | Complete |
+| TRADE-04 | Phase 1 | Complete |
+| TRADE-05 | Phase 1 | Complete |
+| TRADE-06 | Phase 1 | Complete |
+| TRADE-07 | Phase 1 | Complete |
+| TRADE-08 | Phase 1 | Complete |
+| TRADE-09 | Phase 1 | Complete |
+| TRADE-10 | Phase 1 | Complete |
+| MODE-01 | Phase 1 | Complete |
 | MODE-02 | Phase 3 | Pending |
 | MODE-03 | Phase 2 | Pending |
 | MODE-04 | Phase 3 | Pending |
@@ -112,4 +112,4 @@
 
 ---
 *Requirements defined: 2026-03-09*
-*Last updated: 2026-03-09 after roadmap creation*
+*Last updated: 2026-03-09 after Phase 1 completion*
