@@ -53,37 +53,47 @@
   function routeMessage(msg) {
     switch (msg.type) {
       case 'snapshot':
-        console.log('[WS] snapshot', msg.data);
-        // Handlers will be added by plans 02/03:
-        // if (typeof Positions !== 'undefined') Positions.handleSnapshot(msg.data);
-        break;
-
-      case 'position:opened':
-      case 'position:updated':
-      case 'position:closed':
-        console.log('[WS]', msg.type, msg.data);
-        // if (typeof Positions !== 'undefined') Positions.handleMessage(msg);
-        // if (typeof NeuronGrid !== 'undefined') NeuronGrid.handleMessage(msg);
-        // if (typeof Terminal !== 'undefined') Terminal.handleMessage(msg);
+        if (typeof Positions !== 'undefined') Positions.handleMessage(msg);
+        if (typeof Terminal !== 'undefined') Terminal.handleMessage(msg);
+        if (typeof NeuronGrid !== 'undefined') NeuronGrid.handleMessage(msg);
         break;
 
       case 'signal:detected':
       case 'signal:validated':
       case 'signal:rejected':
+        if (typeof Terminal !== 'undefined') Terminal.handleMessage(msg);
+        if (typeof NeuronGrid !== 'undefined') NeuronGrid.handleMessage(msg);
+        if (typeof BioStats !== 'undefined') BioStats.handleMessage(msg);
+        break;
+
       case 'trade:executed':
-        console.log('[WS]', msg.type, msg.data);
-        // if (typeof Terminal !== 'undefined') Terminal.handleMessage(msg);
-        // if (typeof NeuronGrid !== 'undefined') NeuronGrid.handleMessage(msg);
+        if (typeof Terminal !== 'undefined') Terminal.handleMessage(msg);
+        if (typeof NeuronGrid !== 'undefined') NeuronGrid.handleMessage(msg);
+        if (typeof BioStats !== 'undefined') BioStats.handleMessage(msg);
+        break;
+
+      case 'position:opened':
+      case 'position:updated':
+        if (typeof Positions !== 'undefined') Positions.handleMessage(msg);
+        if (typeof BioStats !== 'undefined') BioStats.handleMessage(msg);
+        break;
+
+      case 'position:closed':
+        if (typeof Positions !== 'undefined') Positions.handleMessage(msg);
+        if (typeof Terminal !== 'undefined') Terminal.handleMessage(msg);
+        if (typeof NeuronGrid !== 'undefined') NeuronGrid.handleMessage(msg);
+        if (typeof BioStats !== 'undefined') BioStats.handleMessage(msg);
         break;
 
       case 'price:updated':
-        console.log('[WS]', msg.type, msg.data);
-        // if (typeof Stats !== 'undefined') Stats.handleMessage(msg);
-        // if (typeof Positions !== 'undefined') Positions.handlePriceUpdate(msg.data);
+        if (typeof Positions !== 'undefined') Positions.handleMessage(msg);
+        if (typeof BioStats !== 'undefined') BioStats.handleMessage(msg);
+        if (typeof NeuronGrid !== 'undefined') NeuronGrid.handleMessage(msg);
+        if (typeof Stats !== 'undefined') Stats.update();
         break;
 
       default:
-        console.log('[WS] Unknown message type:', msg.type, msg.data);
+        break;
     }
   }
 
@@ -110,6 +120,12 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     var dashboard = document.getElementById('dashboard');
+
+    // Initialize all panel modules
+    if (typeof NeuronGrid !== 'undefined') NeuronGrid.init();
+    if (typeof Stats !== 'undefined') Stats.init();
+    if (typeof Positions !== 'undefined') Positions.init();
+    if (typeof Terminal !== 'undefined') Terminal.init();
 
     Boot.onComplete = function () {
       bootComplete = true;
