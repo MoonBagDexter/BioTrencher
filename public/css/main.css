@@ -198,6 +198,87 @@ body {
   scrollbar-color: var(--border) var(--bg-panel);
 }
 
+/* Stat Pulse Animation */
+@keyframes statPulse {
+  0% { color: var(--accent-teal); }
+  50% { color: #ffffff; text-shadow: 0 0 6px rgba(0, 212, 170, 0.6); }
+  100% { color: var(--accent-teal); }
+}
+
+.stat-pulse {
+  animation: statPulse 0.4s ease;
+}
+
+/* Position Cards */
+.position-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin-bottom: 4px;
+  transition: opacity 0.3s ease;
+}
+
+.position-card .mint {
+  font-size: 0.9rem;
+  color: var(--accent-blue);
+}
+
+.position-card .price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.position-card .pnl {
+  font-size: 0.95rem;
+  font-weight: bold;
+}
+
+.position-card .pnl.positive {
+  color: var(--accent-green);
+}
+
+.position-card .pnl.negative {
+  color: var(--accent-red);
+}
+
+.confidence-bar {
+  height: 16px;
+  background: var(--bg-primary);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 4px;
+  position: relative;
+}
+
+.confidence-fill {
+  height: 100%;
+  transition: width 0.5s ease;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  color: var(--bg-primary);
+  min-width: 28px;
+}
+
+.confidence-fill.high-confidence {
+  box-shadow: 0 0 8px rgba(0, 212, 170, 0.4);
+}
+
+.positions-empty {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 24px 8px;
+  line-height: 1.6;
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .dashboard {

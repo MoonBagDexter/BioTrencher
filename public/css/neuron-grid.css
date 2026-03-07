@@ -1,0 +1,18 @@
+/* CL1 Dashboard - Neuron Grid Canvas Styles */
+
+#neuron-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: transparent;
+}
+
+/* Active glow on panel border */
+.neuron-panel {
+  transition: border-color 0.6s ease;
+}
+
+.neuron-panel.active-glow {
+  border-color: rgba(0, 212, 170, 0.3);
+  box-shadow: inset 0 0 12px rgba(0, 212, 170, 0.08);
+}
