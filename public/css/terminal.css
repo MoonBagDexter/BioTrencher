@@ -1,0 +1,169 @@
+/* CL1 Dashboard - Terminal Panel Styles */
+
+/* Terminal container */
+.terminal-panel {
+  position: relative;
+}
+
+#terminal {
+  height: 100%;
+  overflow-y: auto;
+  padding: 4px 8px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+/* Terminal scrollbar */
+#terminal::-webkit-scrollbar {
+  width: 6px;
+}
+
+#terminal::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+#terminal::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+#terminal::-webkit-scrollbar-thumb:hover {
+  background: var(--text-dim);
+}
+
+/* Term line base */
+.term-line {
+  padding: 1px 0;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.term-line .timestamp {
+  color: var(--text-dim);
+  margin-right: 8px;
+  font-size: 0.8em;
+}
+
+/* Color classes */
+.term-line.signal {
+  color: var(--accent-teal);
+}
+
+.term-line.trade {
+  color: var(--accent-blue);
+}
+
+.term-line.reject {
+  color: var(--accent-pink);
+}
+
+.term-line.close-win {
+  color: var(--accent-green);
+}
+
+.term-line.close-loss {
+  color: var(--accent-red);
+}
+
+.term-line.idle {
+  color: var(--text-dim);
+  font-style: italic;
+}
+
+.term-line.system {
+  color: var(--accent-olive);
+}
+
+.term-line.warning {
+  color: var(--accent-red);
+}
+
+/* Separators */
+.term-separator {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border), transparent);
+  margin: 4px 0;
+}
+
+.term-separator.thinking {
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 8px,
+    var(--accent-teal) 8px,
+    var(--accent-teal) 12px
+  );
+  background-size: 200% 100%;
+  animation: thinking-dots 2s linear infinite;
+}
+
+@keyframes thinking-dots {
+  0% { background-position: 0% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Jump to latest button */
+#jump-to-latest {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: var(--accent-teal);
+  color: var(--bg-primary);
+  border: none;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  display: none;
+  z-index: 5;
+  letter-spacing: 1px;
+}
+
+#jump-to-latest:hover {
+  box-shadow: var(--glow-teal);
+}
+
+/* Structured view styles */
+.structured .term-line {
+  padding-left: 8px;
+  border-left: 2px solid transparent;
+}
+
+.structured .term-line.signal {
+  border-left-color: var(--accent-teal);
+}
+
+.structured .term-line.trade {
+  border-left-color: var(--accent-blue);
+}
+
+.structured .term-line.reject {
+  border-left-color: var(--accent-pink);
+}
+
+.structured .term-line.close-win {
+  border-left-color: var(--accent-green);
+}
+
+.structured .term-line.close-loss {
+  border-left-color: var(--accent-red);
+}
+
+.structured .term-line.system {
+  border-left-color: var(--accent-olive);
+}
+
+.structured .term-line.warning {
+  border-left-color: var(--accent-red);
+}
+
+.structured .term-line.idle {
+  border-left-color: transparent;
+}
+
+.structured .term-separator {
+  margin: 8px 0;
+}
