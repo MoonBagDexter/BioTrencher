@@ -28,7 +28,7 @@ export function initWebSocketServer(
     const data = Object.fromEntries(prices);
 
     if (now - lastPriceBroadcast >= 5000) {
-      broadcast('price:updated', data);
+      broadcast('price:updated', { prices: data });
       lastPriceBroadcast = now;
       pendingPriceData = null;
     } else {
@@ -37,7 +37,7 @@ export function initWebSocketServer(
         const delay = 5000 - (now - lastPriceBroadcast);
         priceTimer = setTimeout(() => {
           if (pendingPriceData) {
-            broadcast('price:updated', pendingPriceData);
+            broadcast('price:updated', { prices: pendingPriceData });
             lastPriceBroadcast = Date.now();
             pendingPriceData = null;
           }
