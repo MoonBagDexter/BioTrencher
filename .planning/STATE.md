@@ -5,34 +5,34 @@
 See: .planning/PROJECT.md (updated 2026-03-09)
 
 **Core value:** Real, provable on-chain profitable trades that look like they're being made by a biological neural network
-**Current focus:** Phase 2 in progress - Dashboard + CL1 Theater
+**Current focus:** Phase 2 complete - Dashboard + CL1 Theater
 
 ## Current Position
 
 Phase: 2 of 3 (Dashboard + CL1 Theater)
 Plan: 3 of 3 in current phase
-Status: In progress (02-02 running in parallel)
-Last activity: 2026-03-09 -- Completed 02-03-PLAN.md (Terminal Console + Message Router)
+Status: Phase complete
+Last activity: 2026-03-09 -- Completed 02-02-PLAN.md and 02-03-PLAN.md (Wave 2 parallel)
 
-Progress: [████████████████████░░░░] 86% (6/7 plans)
+Progress: [████████████████████████] 100% (7/7 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 6
+- Total plans completed: 7
 - Average duration: 3 min
-- Total execution time: 17 min
+- Total execution time: 19 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-trading-pipeline | 4/4 | 12 min | 3 min |
-| 02-dashboard-cl1-theater | 2/3 | 5 min | 2.5 min |
+| 02-dashboard-cl1-theater | 3/3 | 7 min | 2.3 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-03 (3 min), 01-04 (3 min), 02-01 (3 min), 02-03 (2 min)
-- Trend: Consistent
+- Last 5 plans: 01-04 (3 min), 02-01 (3 min), 02-02 (2 min), 02-03 (2 min)
+- Trend: Accelerating
 
 *Updated after each plan completion*
 
@@ -62,6 +62,8 @@ Recent decisions affecting current work:
 - [02-01]: Google Fonts CDN for VT323 instead of self-hosting
 - [02-01]: IIFE pattern for client JS modules, Boot exposed on window
 - [02-01]: WS protocol auto-detection (ws/wss) for HTTPS compatibility
+- [02-02]: Confidence recalculation every 2s (balances responsiveness with DOM updates)
+- [02-02]: EMA smoothing on coherence/entropy for biological feel
 - [02-03]: setTimeout chain with jitter for idle chatter (not setInterval)
 - [02-03]: CSS-only structured view toggle (no DOM restructuring)
 - [02-03]: Idle timer reset only on non-idle events
@@ -79,5 +81,5 @@ None.
 ## Session Continuity
 
 Last session: 2026-03-09
-Stopped at: Completed 02-03-PLAN.md (Terminal Console + Message Router)
+Stopped at: Completed 02-02-PLAN.md (Neuron Grid + Positions + Bio-Stats)
 Resume file: None
