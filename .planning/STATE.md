@@ -79,6 +79,12 @@ Recent decisions affecting current work:
 
 None.
 
+### Quick Tasks Completed
+
+| # | Description | Date | Commit | Directory |
+|---|-------------|------|--------|-----------|
+| 001 | Unify dashboard redesign + docs + polish forced UI elements | 2026-03-09 | ef12bbe | [001-unify-dashboard-redesign-and-docs](./quick/001-unify-dashboard-redesign-and-docs/) |
+
 ### Blockers/Concerns
 
 - [Research]: PumpFun SDK documentation is sparse -- needs hands-on exploration during Phase 3 planning
