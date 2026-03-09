@@ -12,7 +12,7 @@ See: .planning/PROJECT.md (updated 2026-03-09)
 Phase: 2 of 3 COMPLETE (Dashboard + CL1 Theater)
 Plan: 3 of 3 in current phase — ALL COMPLETE
 Status: Phase 2 verified and complete
-Last activity: 2026-03-09 -- Phase 2 verified, price:updated data shape fixed
+Last activity: 2026-03-09 -- Post-Phase-2 dashboard redesign unified (quick-001)
 
 Progress: [████████████████████████] 100% Phase 2
 
@@ -68,6 +68,12 @@ Recent decisions affecting current work:
 - [02-03]: CSS-only structured view toggle (no DOM restructuring)
 - [02-03]: Idle timer reset only on non-idle events
 - [02-verify]: price:updated wrapped in { prices } to match frontend expectation
+- [post-02]: Theme overhaul: VT323 → Chakra Petch (display) + DM Mono (mono), bioluminescent color palette
+- [post-02]: Glass morphism panels with backdrop-filter blur, atmospheric background layers (noise, grid, glow orbs, scanlines)
+- [post-02]: Spike waveform oscilloscope overlay on MEA panel (75 samples @ 25kHz, matching CL1 spec)
+- [post-02]: Spike raster plot as full-width bottom strip (59 channels × 30s scrolling window)
+- [post-02]: Per-channel MEA routing — signals to central cluster, rejections to edges, trades to mid-ring
+- [post-02]: CL1 MEA channel layout: column-major 8×8, channels 0/4/7/56/63 reserved (ref/ground)
 
 ### Pending Todos
 
@@ -83,5 +89,5 @@ None.
 ## Session Continuity
 
 Last session: 2026-03-09
-Stopped at: Completed Phase 2 (Dashboard + CL1 Theater) -- all 3 plans verified
+Stopped at: Unified post-Phase-2 dashboard redesign -- spike scope/raster integrated, boot updated, docs current
 Resume file: None
