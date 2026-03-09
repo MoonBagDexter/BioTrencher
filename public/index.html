@@ -6,13 +6,20 @@
   <title>CL1 Neural Trading Dashboard</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/neuron-grid.css">
   <link rel="stylesheet" href="css/terminal.css">
   <link rel="stylesheet" href="css/boot.css">
 </head>
 <body>
+  <!-- Atmospheric background layers -->
+  <div class="bg-noise"></div>
+  <div class="bg-grid"></div>
+  <div class="bg-glow bg-glow--1"></div>
+  <div class="bg-glow bg-glow--2"></div>
+  <div class="bg-scanlines"></div>
+
   <!-- BIOS Boot Sequence Overlay -->
   <div class="boot-overlay" id="boot-overlay"></div>
 
@@ -20,51 +27,89 @@
   <div class="dashboard hidden" id="dashboard">
     <!-- Status Bar -->
     <div class="status-bar">
-      <span class="stat" title="MEA electrode array channel count">
-        <span class="stat-label">Neurons:</span>
-        <span class="stat-value" id="stat-neurons">64</span>
-      </span>
-      <span class="stat" title="Neural synchronization index - derived from win rate EMA">
-        <span class="stat-label">Coherence:</span>
-        <span class="stat-value" id="stat-coherence">0.00</span>
-      </span>
-      <span class="stat" title="Signal entropy measure - derived from price volatility">
-        <span class="stat-label">Entropy:</span>
-        <span class="stat-value" id="stat-entropy">0.00</span>
-      </span>
-      <span class="stat" title="Neural firing frequency - events per minute">
-        <span class="stat-label">Firing Rate:</span>
-        <span class="stat-value" id="stat-firing-rate">0 Hz</span>
-      </span>
-      <span class="stat" title="Realized trade win percentage">
-        <span class="stat-label">Win Rate:</span>
-        <span class="stat-value" id="stat-win-rate">0%</span>
-      </span>
-      <span class="stat ws-status" title="WebSocket connection status">
+      <div class="status-bar__brand">
+        <span class="brand-mark">CL1</span>
+        <span class="brand-separator"></span>
+        <span class="brand-label">NEURAL CORTEX</span>
+      </div>
+      <div class="status-bar__stats">
+        <div class="stat" title="MEA electrode array channel count">
+          <span class="stat-label">Neurons</span>
+          <span class="stat-value" id="stat-neurons">64</span>
+        </div>
+        <div class="stat" title="Neural synchronization index">
+          <span class="stat-label">Coherence</span>
+          <span class="stat-value" id="stat-coherence">0.00</span>
+        </div>
+        <div class="stat" title="Signal entropy measure">
+          <span class="stat-label">Entropy</span>
+          <span class="stat-value" id="stat-entropy">0.00</span>
+        </div>
+        <div class="stat" title="Neural firing frequency">
+          <span class="stat-label">Firing Rate</span>
+          <span class="stat-value" id="stat-firing-rate">0 Hz</span>
+        </div>
+        <div class="stat" title="Realized trade win percentage">
+          <span class="stat-label">Win Rate</span>
+          <span class="stat-value" id="stat-win-rate">0%</span>
+        </div>
+      </div>
+      <div class="status-bar__connection">
+        <span class="ws-label">LINK</span>
         <span class="ws-dot" id="ws-dot"></span>
-      </span>
-    </div>
-
-    <!-- Three-Column Layout -->
-    <div class="panel neuron-panel">
-      <div class="panel-header">MEA Visualizer</div>
-      <div class="panel-content">
-        <canvas id="neuron-canvas"></canvas>
       </div>
     </div>
 
-    <div class="panel positions-panel">
-      <div class="panel-header">Active Positions</div>
-      <div class="panel-content" id="positions-list"></div>
+    <!-- Main Panels -->
+    <div class="panels">
+      <!-- Left column: MEA grid + spike scope -->
+      <div class="panel neuron-panel">
+        <div class="panel-header">
+          <span class="panel-header__title">NEURON ACTIVITY — CL1 MEA</span>
+          <span class="mea-legend">
+            <span class="mea-legend__item"><span class="mea-legend__dot mea-legend__dot--auto"></span>Autonomous</span>
+            <span class="mea-legend__item"><span class="mea-legend__dot mea-legend__dot--stim"></span>Stimulated</span>
+          </span>
+        </div>
+        <div class="panel-content neuron-panel__content">
+          <canvas id="neuron-canvas"></canvas>
+          <!-- Spike waveform oscilloscope overlay -->
+          <div class="spike-scope">
+            <div class="spike-scope__label">SPIKE WAVEFORM</div>
+            <canvas id="spike-scope"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Middle column: Positions -->
+      <div class="panel positions-panel">
+        <div class="panel-header">
+          <span class="panel-header__icon">◈</span>
+          <span class="panel-header__title">Active Positions</span>
+        </div>
+        <div class="panel-content" id="positions-list"></div>
+      </div>
+
+      <!-- Right column: Terminal -->
+      <div class="panel terminal-panel">
+        <div class="panel-header">
+          <span class="panel-header__icon">▣</span>
+          <span class="panel-header__title">Neural Decision Log</span>
+          <button class="toggle-btn" id="terminal-toggle" title="Toggle raw/structured view">RAW</button>
+        </div>
+        <div class="panel-content" id="terminal"></div>
+        <button id="jump-to-latest">↓ LATEST</button>
+      </div>
     </div>
 
-    <div class="panel terminal-panel">
+    <!-- Spike Raster Plot (bottom strip) -->
+    <div class="panel raster-panel">
       <div class="panel-header">
-        Neural Decision Log
-        <button class="toggle-btn" id="terminal-toggle" title="Toggle raw/structured view">RAW</button>
+        <span class="panel-header__title">SPIKE RASTER</span>
       </div>
-      <div class="panel-content" id="terminal"></div>
-      <button id="jump-to-latest">LATEST</button>
+      <div class="panel-content raster-panel__content">
+        <canvas id="raster-canvas"></canvas>
+      </div>
     </div>
   </div>
 
@@ -72,6 +117,8 @@
   <script src="js/confidence.js"></script>
   <script src="js/stats.js"></script>
   <script src="js/neuron-grid.js"></script>
+  <script src="js/spike-waveform.js"></script>
+  <script src="js/spike-raster.js"></script>
   <script src="js/positions.js"></script>
   <script src="js/terminal.js"></script>
   <script src="js/boot.js"></script>

@@ -1,18 +1,119 @@
-/* CL1 Dashboard - Neuron Grid Canvas Styles */
+/* CL1 Dashboard — Neuron Grid + Spike Scope Styles (Wetware Theme) */
+
+/* Neuron panel content container */
+.neuron-panel__content {
+  padding: 0 !important;
+  overflow: hidden !important;
+  position: relative;
+}
 
 #neuron-canvas {
   width: 100%;
   height: 100%;
   display: block;
-  background: transparent;
+  background: #0c0e14;
+  position: relative;
+  z-index: 1;
 }
 
-/* Active glow on panel border */
+/* Ambient breathing glow on panel border */
 .neuron-panel {
-  transition: border-color 0.6s ease;
+  transition: border-color 0.8s ease, box-shadow 0.8s ease;
 }
 
 .neuron-panel.active-glow {
-  border-color: rgba(0, 212, 170, 0.3);
-  box-shadow: inset 0 0 12px rgba(0, 212, 170, 0.08);
+  border-color: rgba(0, 255, 163, 0.2);
+  box-shadow:
+    inset 0 0 30px rgba(0, 255, 163, 0.04),
+    0 0 20px rgba(0, 255, 163, 0.06);
+}
+
+/* ═══════════════════════════════════════
+   SPIKE WAVEFORM OSCILLOSCOPE (overlay)
+   ═══════════════════════════════════════ */
+
+.spike-scope {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  width: 240px;
+  height: 100px;
+  z-index: 10;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+  background: var(--surface-glass);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 0 20px rgba(0, 255, 163, 0.04);
+}
+
+/* Phosphor accent line (matches .panel::before) */
+.spike-scope::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10px;
+  right: 10px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--phosphor-faint), rgba(0, 255, 163, 0.15), var(--phosphor-faint), transparent);
+  z-index: 12;
+}
+
+.spike-scope__label {
+  position: absolute;
+  top: 3px;
+  right: 6px;
+  z-index: 11;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.5rem;
+  color: rgba(255, 255, 255, 0.15);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+#spike-scope {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ═══════════════════════════════════════
+   MEA LEGEND
+   ═══════════════════════════════════════ */
+
+.mea-legend {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-left: auto;
+}
+
+.mea-legend__item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  letter-spacing: 0.5px;
+}
+
+.mea-legend__dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.mea-legend__dot--auto {
+  background: #3d8b8b;
+  box-shadow: 0 0 4px rgba(0, 212, 170, 0.4);
+}
+
+.mea-legend__dot--stim {
+  background: #8b3d5a;
+  box-shadow: 0 0 4px rgba(255, 68, 136, 0.4);
 }
